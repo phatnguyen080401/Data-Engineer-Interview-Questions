@@ -37,14 +37,10 @@ def sorted_linked_list(llist):
   return llist
 
 LL = LinkedList()
-LL.insert(1)
-LL.insert(1)
-LL.insert(3)
-LL.insert(4)
-LL.insert(4)
-LL.insert(5)
-LL.insert(6)
-LL.insert(6)
+
+arr = [1,1,3,4,4,5,6,6]
+for i in arr:
+  LL.insert(i)
 
 sorted_llist = sorted_linked_list(LL)
 sorted_llist.printLL()
