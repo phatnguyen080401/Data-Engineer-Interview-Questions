@@ -1,0 +1,25 @@
+The probability that the point obtained in the first roll is
+greater than the sum of the points obtained in the second roll 
+is 20/216 (~ 9.26%)
+
+Explain: 
+  - Case 1: The first roll is 6: 
+      (1,1), (1,2), (1,3), (1,4), (2,2), (2,3) corresponding to the second and the third roll.
+      The sum of these combination is lower than 6. So we have 6 cases but the second 
+      and the third roll can permute. Therefore we need to multiply to 2 and subtract 2 because
+      of duplicate roll (When 2 dices roll the same number). Finally we have 10 cases.
+
+  - Case 2: The first roll is 5:
+      (1,1), (1,2), (1,3), (2,2). Having 4 cases x 2 - 2 = 6 cases.
+  
+  - Case 3: The first roll is 4:
+      (1,1), (1,2). Having 2 cases x 2 - 1 = 3 cases.
+  
+  - Case 4: The first roll is 3:
+      (1,1). Only have 1 cases.
+
+  The remaining rolls are 1 and 2 having no cases.
+
+  The sum of all cases: 10 + 6 + 3 + 1 = 20 cases
+  The universal set: 6 x 6 x 6 = 216 cases
+  The probability: 20 / 216 = ~9.26%
