@@ -1,0 +1,5 @@
+The best graph to show to the public a statistics report for examinees in your 
+university entrance exam is bar graph. The bar graph will describe the number of 
+examinees gets the grade from 0 to 10. It strongly illustrates statistics that how
+much student obtain grade from 0 to 10. It is also easy to analyze the data to know 
+how the quality of the entrance students is.
