@@ -1,0 +1,30 @@
+Fistly, we create an API to rank and score the website based on the usefulness of their information 
+to our wanted information. Then we generate a database to store link websites, score and their current
+rank. The first 100 websites storing in database always have the highest rank and infinty score because they 
+are the initially websites. After that we have 2 cases:
+
+Case 1: When the data is small
+We use relational database such as Postgresql, MySQL or Oracle as a main database to store all data. If we have
+less than 1000 websites, we can freely add it to the database. But when it reachs 1000 websites,  we must score 
+the new website with the API we created and rank it to keep only those with high scores while removing those 
+with lowest scores. 
+Besides, we can use Redis instead of relational database to speed up the performance of the database because it uses
+a technic called 'cache'. This technic store the result of the query every 10 or 15 minutes (depend on your purpose).
+But it have some trade off is that the process is not real-time because it cache every certain period of time.
+
+Case 2: When we have a massively data
+When the data grows bigger and bigger, it is a horizontal scale then the Lambda architecture is suitable for this case.
+We use Lambda architecture to reduce the latency, distribute to many machine without buying hardwares, eliminate 
+the risk of data inconsistency that is often seen in distributed systems and have a high fault tolerance. The Lambda 
+architecture have 3 layers: batch layer, speed layer and serving layer.
+The data going through API as we mentioned about use Kafka as a producer to store data into topic and distribute data 
+to consumers. Also we use Spark as consumer to delivery simultaneously to both the batch layer and the speed layer.
+The batch layer saves all data coming into as batch views (we can use Redis in this layer). The speed layer is used 
+for real-time processing, we can use Spark Steaming then it will generate speed views. Both batch views and speed views 
+is delivery to serving layer to use for various purposes (e.g: analyze, visualize, predict the data, ...). In serving layer, we can
+use Cassandra to store all data from those views for scalability, data consistency and high performance.
+With this solution, we can maintain more than 1000 websites with high speed and performance and handle big data problem.
+
+I have a question that why we not create more instances of crawler and distribute them to computers to improve the speed and
+performance because the more instances, the more websites we can crawl instead of just only 1 crawler? 
+Besides, we can use more API to support ranking and  scoring the websites based on the usefulness.
